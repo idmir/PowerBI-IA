@@ -1,0 +1,40 @@
+table DimProductos
+	lineageTag: b978ecd5-4e28-4fa3-bdea-0324284443e3
+
+	column IdProducto
+		dataType: int64
+		formatString: 0
+		lineageTag: a590696c-c58d-4ed6-9bba-7304573f6019
+		summarizeBy: none
+		sourceColumn: IdProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreProducto
+		dataType: string
+		lineageTag: c09e7ce8-9da2-49f5-9b65-0234e5b7844c
+		summarizeBy: none
+		sourceColumn: NombreProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: 10345b63-0230-4639-a12c-fdad90250e8d
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marca
+		dataType: string
+		lineageTag: d9643ba6-2422-48cd-b72a-269165cc110a
+		summarizeBy: none
+		sourceColumn: Marca
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProductos = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("d:/Caso Practico/Fuente de datos/Productos.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]), PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"IdProducto", Int64.Type}, {"NombreProducto", type text}, {"Categoria", type text}, {"Marca", type text}}) in ChangedTypes
+

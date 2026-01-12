@@ -1,0 +1,239 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "09cc99554580ab88012e",
+  "position": {
+    "x": 784.12424503882653,
+    "y": 406.41932700603968,
+    "z": 5000,
+    "height": 256.220880069025,
+    "width": 446.17773943054357,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimProductos"
+                    }
+                  },
+                  "Property": "NombreProducto"
+                }
+              },
+              "queryRef": "DimProductos.NombreProducto",
+              "nativeQueryRef": "Producto",
+              "displayName": "Producto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "VentasBrutas"
+                }
+              },
+              "queryRef": "Medidas.VentasBrutas",
+              "nativeQueryRef": "Ventas Brutas",
+              "displayName": "Ventas Brutas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "ImporteDescuento"
+                }
+              },
+              "queryRef": "Medidas.ImporteDescuento",
+              "nativeQueryRef": "Importe Descuento",
+              "displayName": "Importe Descuento"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "VentasNetas"
+                }
+              },
+              "queryRef": "Medidas.VentasNetas",
+              "nativeQueryRef": "Ventas Netas",
+              "displayName": "Ventas Netas"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ventas por Productos'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cca20551509eb15c7791",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimProductos"
+              }
+            },
+            "Property": "NombreProducto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5b08aa911a6e0d43e89b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "VentasBrutas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "107cae95ada7a30dd038",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "ImporteDescuento"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f346364459889715e803",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "VentasNetas"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

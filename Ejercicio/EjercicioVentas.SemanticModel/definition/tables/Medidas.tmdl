@@ -1,0 +1,24 @@
+table Medidas
+	lineageTag: a7acac9d-0aeb-4de1-8460-2b15fa6479cd
+
+	measure VentasBrutas = SUMX(FactVentas, FactVentas[Cantidad] * FactVentas[PrecioUnitario])
+		lineageTag: 7ea1f582-966c-4b66-b4ff-e6ab453c94b3
+
+	measure ImporteDescuento = SUMX(FactVentas, FactVentas[Cantidad] * FactVentas[PrecioUnitario] * FactVentas[DescuentoPorc])
+		lineageTag: 5f85911d-54df-403c-96cf-5a6bfb70a7e5
+
+	measure VentasNetas = [VentasBrutas] - [ImporteDescuento]
+		lineageTag: 45ddce56-47fb-444c-9b5d-8b42d4ce50e1
+
+	measure UnidadesVendidas = SUM(FactVentas[Cantidad])
+		lineageTag: 08783f44-5644-474f-9e17-c82d49132bed
+
+	column Medidas
+		lineageTag: ad05586a-7dbb-4809-92e9-73212fc02c94
+		isNameInferred
+		sourceColumn: [Medidas]
+
+	partition Medidas = calculated
+		mode: import
+		source = SELECTCOLUMNS ( { (1) }, "Medidas", 1 )
+

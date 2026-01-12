@@ -1,0 +1,23 @@
+table DimPais
+	lineageTag: 1015cdf4-90ba-4849-91f0-f8248321a3e5
+
+	column Pais
+		dataType: string
+		lineageTag: 8d27e926-898a-43a2-b930-fcc127057fa4
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: a89537de-51e5-460f-87e4-f169f35cb2aa
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPais = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("d:/Caso Practico/Fuente de datos/Pais.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]), PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"Pais", type text}, {"Region", type text}}) in ChangedTypes
+

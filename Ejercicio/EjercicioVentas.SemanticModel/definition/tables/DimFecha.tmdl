@@ -1,0 +1,114 @@
+table DimFecha
+	lineageTag: c0d88e16-1efc-4aea-aad8-c153619bf64c
+
+	column Fecha
+		formatString: dd/mm/yyyy
+		lineageTag: 985597b6-d85e-4e6a-ae42-cf1d0c1a9961
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		lineageTag: b28fe0a3-a16d-4287-871b-27aa8cf8c674
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNumero
+		lineageTag: 4f7005c5-1e4d-4cf2-9a39-ab7b2b86dba1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNumero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNombre
+		lineageTag: 307e6acc-e850-4f25-96fd-72a7e65a326b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNombre]
+		sortByColumn: MesNumero
+
+		annotation SummarizationSetBy = Automatic
+
+	column AñoMes
+		lineageTag: 29c0bf5b-dc15-422c-aebb-99e88caa035c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AñoMes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: a5639a81-7c1a-4c8a-ade6-e9bac133200d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrimestreNombre
+		lineageTag: c7ed6dce-255e-4879-bfd1-99602f84998b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [TrimestreNombre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		lineageTag: 52514229-5899-41a0-aeb5-17ef56ee1382
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Dia]
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreDiaSemana
+		lineageTag: eeaefcdf-179b-41f3-ad69-18fd7bdf46b5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NombreDiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroDiaSemana
+		lineageTag: da1dff66-c277-4dec-833a-1ae431b515a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NumeroDiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsFinDeSemana
+		lineageTag: 351e0961-1f4c-4d93-a3b8-5f27c58fdae0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EsFinDeSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = calculated
+		mode: import
+		source =
+				VAR MinFecha = CALCULATE(MIN(FactVentas[Fecha]), NOT(ISBLANK(FactVentas[Fecha])))
+				VAR MaxFecha = CALCULATE(MAX(FactVentas[Fecha]), NOT(ISBLANK(FactVentas[Fecha])))
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(MinFecha, MaxFecha),
+				    "Año", YEAR([Date]),
+				    "MesNumero", MONTH([Date]),
+				    "MesNombre", FORMAT([Date], "[$-C0A]MMMM"),
+				    "AñoMes", FORMAT([Date], "YYYY-MM"),
+				    "Trimestre", QUARTER([Date]),
+				    "TrimestreNombre", "T" & QUARTER([Date]) & " " & YEAR([Date]),
+				    "Dia", DAY([Date]),
+				    "NombreDiaSemana", FORMAT([Date], "[$-C0A]DDDD"),
+				    "NumeroDiaSemana", WEEKDAY([Date],2),
+				    "EsFinDeSemana", IF(WEEKDAY([Date],2)>5, TRUE(), FALSE())
+				)
+

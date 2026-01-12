@@ -1,0 +1,12 @@
+relationship AutoDetected_15705b0b-d02c-4276-af39-32ec076e239b
+	fromColumn: FactVentas.Pais
+	toColumn: DimPais.Pais
+
+relationship AutoDetected_8554ee54-d21b-484f-bc1d-214331fe413c
+	fromColumn: FactVentas.IdProducto
+	toColumn: DimProductos.IdProducto
+
+relationship 0483b455-74b1-a048-3ebe-c5c5677063e1
+	fromColumn: FactVentas.Fecha
+	toColumn: DimFecha.Fecha
+

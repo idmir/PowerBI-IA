@@ -1,0 +1,82 @@
+table FactVentas
+	lineageTag: 175f31f1-9ad9-4653-b2a6-758f917054d6
+
+	column Fecha
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 2681ec2f-dda5-4914-aa9f-f844f58a16f4
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column IdProducto
+		dataType: int64
+		formatString: 0
+		lineageTag: 32040841-b385-40f7-a546-aa9da1bd8e75
+		summarizeBy: none
+		sourceColumn: IdProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 9516a013-a80f-4b37-b015-88b49fc5889a
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal
+		dataType: string
+		lineageTag: 1048131d-426f-4645-88df-6b21afba12c8
+		summarizeBy: none
+		sourceColumn: Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoCliente
+		dataType: string
+		lineageTag: 54b96c9e-ff76-421b-ac80-c8c90a6f6209
+		summarizeBy: none
+		sourceColumn: SegmentoCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cantidad
+		dataType: int64
+		formatString: 0
+		lineageTag: 0fba9155-2ce3-4fac-8086-c624b07734f0
+		summarizeBy: sum
+		sourceColumn: Cantidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecioUnitario
+		dataType: double
+		lineageTag: b896070f-3848-4348-ba6e-7703079a3895
+		summarizeBy: sum
+		sourceColumn: PrecioUnitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DescuentoPorc
+		dataType: double
+		lineageTag: 734cb068-1178-430e-b789-f961ce4e1683
+		summarizeBy: sum
+		sourceColumn: DescuentoPorc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactVentas = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("d:/Caso Practico/Fuente de datos/Ventas.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]), PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"Fecha", type date}, {"IdProducto", Int64.Type}, {"Pais", type text}, {"Canal", type text}, {"SegmentoCliente", type text}, {"Cantidad", Int64.Type}, {"PrecioUnitario", type number}, {"DescuentoPorc", type number}}) in ChangedTypes
+
