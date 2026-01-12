@@ -1,0 +1,21 @@
+Quiero que crees una tabla de dimensión de tiempo llamada DimFecha, siguiendo estas reglas:
+
+1. La tabla DimFecha debe tener una fila por cada día entre:
+   - Fecha mínima de FactVentas[Fecha]
+   - Fecha máxima de FactVentas[Fecha]
+
+2. La columna clave [Fecha] de DimFecha debe:
+   - Ser de tipo date (sin hora).
+   - No contener valores en blanco ni duplicados.
+   - Estar visible para usarla en relaciones.
+3. Además de la columna [Fecha], agrega columnas derivadas para análisis de tiempo, al menos:
+   - [Año] (numérico, por ejemplo 2025)
+   - [MesNumero] (1–12)
+   - [MesNombre] (Enero, Febrero, etc.)
+   - [AñoMes] (texto tipo "2025-01" o "2025 Ene")
+   - [Trimestre] (1–4)
+   - [TrimestreNombre] (por ejemplo "T1 2025")
+   - [Dia] (día del mes 1–31)
+   - [NombreDiaSemana] (Lunes, Martes, etc.)
+   - [NumeroDiaSemana] (1–7)
+   - [EsFinDeSemana] (TRUE si es sábado o domingo, FALSE en caso contrario)

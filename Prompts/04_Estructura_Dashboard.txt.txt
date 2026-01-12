@@ -1,0 +1,5 @@
+Con base en el siguiente contexto:
+1.Estoy trabajando con un modelo de datos en Power BI que incluye tablas de hechos y dimensiones organizadas en un modelo estrella.
+2.Las tablas incluyen métricas como Ventas Brutas, Ventas Netas, Importe de Descuentos y Unidades Vendidas, calculadas a partir de la tabla de hechos FactVentas.
+3.Las dimensiones incluyen información sobre productos, países y fechas.
+Primero, revisa el modelo de datos y verifica si está correctamente estructurado para un análisis eficiente. Luego, sugiéreme dos hojas de reportes diseñadas para un gerente de ventas global. Cada hoja debe incluir gráficos, tablas y segmentadores relevantes, y estar enfocada en proporcionar información clave para la toma de decisiones estratégicas.

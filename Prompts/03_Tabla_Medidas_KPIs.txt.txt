@@ -1,0 +1,10 @@
+Crea una tabla llamada Medidas
+Esta tabla debe ser utilizada exclusivamente para almacenar medidas calculadas y no debe contener columnas de datos.
+
+Agrega las siguientes medidas en la tabla Medidas, usando la tabla de hechos FactVentas:
+
+VentasBrutas: Calcula el total vendido antes de aplicar descuentos, sumando la cantidad multiplicada por el precio unitario para todas las filas de la tabla de hechos.
+ImporteDescuento: Calcula el total de descuentos otorgados, sumando la cantidad multiplicada por el precio unitario y el porcentaje de descuento para todas las filas de la tabla de hechos.
+VentasNetas: Calcula el importe realmente cobrado tras descuentos, restando el importe de descuentos al total vendido.
+UnidadesVendidas: Calcula la cantidad total de unidades vendidas, sumando la columna cantidad de la tabla de hechos.
+El sistema debe generar las expresiones DAX óptimas para cada medida y asegurar que la tabla tenga una partición válida para su visualización en Power BI.

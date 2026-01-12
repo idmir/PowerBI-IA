@@ -1,0 +1,10 @@
+Carga todos los archivos CSV de la carpeta "D:\Caso Practico\Fuente de datos" en el modelo de datos de Power BI Desktop, uno por uno y de forma secuencial.
+Para cada archivo CSV:
+•Léelo usando una codificación que preserve correctamente los caracteres especiales (como tildes y la letra “ñ”), preferiblemente UTF-8.
+•Usa la primera fila como nombres de las columnas, respetando su orden y cantidad.
+•Analiza los valores de cada columna y asigna automáticamente el tipo de dato más adecuado (texto, número entero, número decimal, fecha o fecha-hora) para cada columna, de modo que los datos se importen correctamente y puedan ser usados en cálculos y visualizaciones.
+•Crea la tabla en el modelo utilizando únicamente las columnas presentes en el archivo, sin agregar columnas ni datos adicionales.
+•Realiza todos los pasos necesarios para crear la tabla en el modelo.
+Después de crear cada tabla:
+•Si predominan números, códigos o importes (por ejemplo, IdProducto, IdCliente, montos), trátala como tabla de hechos y renómbrala en PascalCase comenzando con “Fact” (ejemplo: FactVentas).
+•Si predominan descripciones (por ejemplo, nombres de productos, países, categorías, clientes), trátala como tabla de dimensión y renómbrala en PascalCase comenzando con “Dim” (ejemplo: DimProductos).
